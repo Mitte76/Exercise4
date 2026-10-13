@@ -5,7 +5,6 @@
         public int Age
         { get; } = age;
 
-
         public string FirstName
         {
             get;
@@ -16,7 +15,6 @@
             get;
 
         } = lastName;
-
 
         public override string? ToString()
         {

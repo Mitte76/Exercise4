@@ -17,6 +17,7 @@ string firstName, string lastName, int age, decimal salary) : PersonWithSalary(
 
             return salary;
         }
+
         private static string ValidateName(string name, string field)
         {
             if (name.Length < 3)
@@ -25,6 +26,7 @@ string firstName, string lastName, int age, decimal salary) : PersonWithSalary(
 
             return name;
         }
+
         private static int ValidateAge(int age)
         {
             if (age <= 0)

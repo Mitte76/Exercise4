@@ -122,6 +122,8 @@ namespace Exercise4
             string[] input = Console.In.ReadToEnd()
                 .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
 
+            if (input.Length == 0) { return; }
+
             int lines = input.Length;
 
             for (int i = 0; i < lines; i++)
@@ -153,14 +155,13 @@ namespace Exercise4
             Console.WriteLine("Every row should contain: \"FirstName\" \"LastName\" \"Age\" \"Salary\"");
             Console.WriteLine("The last line should contain an int which is the pay increase in %");
 
-            var employees = new List<Person>();
+            var employees = new List<PersonWithSalary>();
 
             string[] input = Console.In.ReadToEnd()
                 .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
 
+            if(input.Length == 0) { return; }
             decimal bonusMultiplier = decimal.TryParse(input[^1], out bonusMultiplier) ? bonusMultiplier / 100 : 0;
-
-            Console.WriteLine("bonus: " + bonusMultiplier);
 
             for (int i = 0; i < input.Length - 1; i++)
             {
@@ -185,6 +186,7 @@ namespace Exercise4
 
             PressAnyKey();
         }
+
         static void CalculateSalaryWithValidation()
         {
             Console.WriteLine("Please supply a list of Employes:");
@@ -192,14 +194,16 @@ namespace Exercise4
             Console.WriteLine("The last line should contain an int which is the pay increase in %");
 
 
-            var employees = new List<Person>();
+            var employees = new List<ValidatedPersonWithSalary>();
 
             string[] input = Console.In.ReadToEnd()
                 .Split(Environment.NewLine, StringSplitOptions.RemoveEmptyEntries);
 
+            if (input.Length == 0) { return; }
+
             decimal bonusMultiplier = decimal.TryParse(input[^1], out bonusMultiplier) ? bonusMultiplier / 100 : 0;
 
-            for (int i = 0; i < input.Length; i++)
+            for (int i = 0; i < input.Length - 1; i++)
             {
                 string[] parts = input[i].Split(' ', StringSplitOptions.RemoveEmptyEntries);
                 if (parts.Length < 4 || !int.TryParse(parts[2], out int age) || !decimal.TryParse(parts[3].Replace(".", ","), out decimal salary))
@@ -240,9 +244,3 @@ namespace Exercise4
     }
 
 }
-//Ida Svensson 65 2200
-//Berit Dahl 57 3333
-//Bert Lewinsson 27 600
-//Anna Hamren 44 666,66
-//Jacob Andersson 35 300
-//20
